@@ -15,13 +15,35 @@ def common_data(columntitles, checktitles):
                 result=True
                 return result
                 break
-        
 
+#Running Header Definition      
 titleOutput=(common_data(columntitles,checktitles))
 
+#define what is the exact header match between the two lists
+same_values=set(columntitles) & set(checktitles)
+
+#Checking header function output, true or false. If false, print message for user
 if titleOutput == None:
     print("Please insert appropriate file")
 
-# for i in data:
-#     location=geolocater.geocode(i, "Address")
-#     print(location.latitude, location.longitude)
+#Sort user spreadsheet for Address/address values
+for title in columntitles:
+    if title == "Address":
+        C=df['Address']
+    elif title == "address":
+        C=df['address']
+    else:
+        pass
+
+#setup two empty dataframes for the Longitude and Latitude values
+df2=pd.DataFrame(columns=['Longitude'])
+df3=pd.DataFrame(columns=['Longitude'])
+
+# Loop for geolocating all addresses from spreadsheet
+for i in C:
+    rows2 = [[i,i+1] for i in range(C)]
+    location=geolocater.geocode(i)
+    longitudecoordinate=location.longitude
+    latitudecoordinate=location.latitude
+    print(location.longitude, location.latitude)
+    print(longitudecoordinate+i)
