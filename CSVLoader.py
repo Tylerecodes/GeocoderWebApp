@@ -51,3 +51,7 @@ for i in C:
 #Create Pandas dataframes from rows objects
 df2=pd.DataFrame(rows2,columns=['Longitude'])
 df3=pd.DataFrame(rows3,columns=['Latitude'])
+
+#Merge dataframes as new columns to user excel file
+df['Longitude']=df2
+df['Latitude']=df3
