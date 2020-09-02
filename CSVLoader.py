@@ -35,15 +35,19 @@ for title in columntitles:
     else:
         pass
 
-#setup two empty dataframes for the Longitude and Latitude values
-df2=pd.DataFrame(columns=['Longitude'])
-df3=pd.DataFrame(columns=['Longitude'])
+#setup two empty lists for the Longitude and Latitude values
+rows2=[]
+rows3=[]
 
 # Loop for geolocating all addresses from spreadsheet
 for i in C:
-    rows2 = [[i,i+1] for i in range(C)]
     location=geolocater.geocode(i)
     longitudecoordinate=location.longitude
     latitudecoordinate=location.latitude
+    rows2.append(longitudecoordinate)
+    rows3.append(latitudecoordinate) 
     print(location.longitude, location.latitude)
-    print(longitudecoordinate+i)
+
+#Create Pandas dataframes from rows objects
+df2=pd.DataFrame(rows2,columns=['Longitude'])
+df3=pd.DataFrame(rows3,columns=['Latitude'])
