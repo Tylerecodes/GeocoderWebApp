@@ -55,3 +55,7 @@ df3=pd.DataFrame(rows3,columns=['Latitude'])
 #Merge dataframes as new columns to user excel file
 df['Longitude']=df2
 df['Latitude']=df3
+
+#Convert dataframe to excel sheet for user to download
+df.to_csv ('exportDataframe.csv', index = False, header=True)
+
