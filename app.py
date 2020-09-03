@@ -1,15 +1,24 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from geopy.geocoders import Nominatim
+import csv
+
+geolocater= Nominatim(user_agent="GeocoderWebApp", timeout=1000)
 
 app=Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET','POST'])
 def index():
+    return render_template('index.html')
 
-    geolocater= Nominatim(user_agent="GeocoderWebApp")
+@app.route("/data", methods=['GET','POST'])
+def data():
 
-    df = pd.read_csv("myfile")
+    if request.method == "POST":
+        UserInput=request.form['csvfile']
+
+
+    df = pd.read_csv(UserInput)
     columntitles=df.columns.tolist()
     checktitles=['Address', 'address']
 
@@ -65,7 +74,7 @@ def index():
     #Convert dataframe to excel sheet for user to download
     df.to_csv ('exportDataframe.csv', index = False, header=True)
 
-    return render_template('index.html')
+    return render_template('data.html')
 
 
 if __name__== '__main__':
