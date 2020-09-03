@@ -67,7 +67,7 @@ def data():
             #Convert df to html table for displaying
             HTMLTable=df.to_html(header="true", table_id="table")
 
-            return render_template('data.html', data=HTMLTable)
+            return render_template('data.html', data=HTMLTable )
     return render_template('index.html', text="Please insert appropriate file")
 
 #Generating new page for downloading CSV file
