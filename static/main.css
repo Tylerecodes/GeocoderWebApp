@@ -45,6 +45,8 @@ html, body {
 }
 
 .message {
+    display: block;
     font-size: 15px;
     color: #ff9999;
+    margin: auto;
 }
