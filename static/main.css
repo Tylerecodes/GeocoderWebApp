@@ -3,6 +3,18 @@ html, body {
     margin: auto;
 }
 
+#HTMLtable {
+    color: #e2eff0;
+    margin: auto;
+}
+
+#download {
+    width: 150px;
+    height: 30px;
+    background-color: steelblue;
+    margin: 4px;
+}
+
 .container {
     margin: auto;
     width: 100%;
@@ -31,23 +43,13 @@ html, body {
     margin: 30px;
 }
 
-.button {
-    width: 70px;
+.output{
+    display: inline-block;
+}
+
+.container button {
+    width: 80px;
     height: 30px;
     background-color: steelblue;
     margin: 4px;
-}
-
-.message {
-    display: block;
-    font-size: 15px;
-    color: #e2eff0;
-    margin: auto;
-}
-
-.HTMLtable {
-    display: block;
-    font-size: 15px;
-    color: #e2eff0;
-    margin: auto;
 }
